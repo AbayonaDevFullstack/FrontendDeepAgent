@@ -189,7 +189,7 @@ export const ChatInterface = React.memo<ChatInterfaceProps>(
         <div className={styles.header}>
           <div className={styles.headerLeft}>
             <Logo size="md" variant="icon" />
-            <h1 className={styles.title}>Lois Agent</h1>
+            <h1 className={styles.title}>Louis Agent</h1>
           </div>
           <div className={styles.headerRight}>
             <Button
