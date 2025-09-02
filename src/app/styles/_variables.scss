@@ -1,0 +1,92 @@
+@use 'sass:color';
+
+// Brand colors
+$brand-light-gray: #CAC8C7;
+$brand-dark-blue: #0E2A4C;
+$brand-medium-blue: #37557B;
+$brand-dark-gray: #6A6865;
+$brand-sky-blue: #6C8CAF;
+$brand-ochre-blue: #779DAC;
+
+// Light theme colors
+$color-primary: $brand-dark-blue;
+$color-user-message: $brand-medium-blue;
+$color-avatar-bg: $brand-light-gray;
+$color-secondary: $brand-dark-blue;
+$color-success: #10b981;
+$color-warning: #f59e0b;
+$color-error: #ef4444;
+$color-background: #f9f9f9;
+$color-subagent-hover: $brand-sky-blue;
+$color-surface: #ffffff;
+$color-border: $brand-light-gray;
+$color-border-light: color.adjust($brand-light-gray, $lightness: 15%);
+$color-text-primary: $brand-dark-blue;
+$color-text-secondary: $brand-dark-gray;
+$color-text-tertiary: color.adjust($brand-dark-gray, $lightness: 20%);
+
+// Dark theme colors
+$color-primary-dark: $brand-sky-blue;
+$color-user-message-dark: $brand-ochre-blue;
+$color-avatar-bg-dark: $brand-dark-gray;
+$color-secondary-dark: $brand-sky-blue;
+$color-success-dark: #34d399;
+$color-warning-dark: #fbbf24;
+$color-error-dark: #f87171;
+$color-background-dark: color.adjust($brand-dark-blue, $lightness: -15%);
+$color-subagent-hover-dark: $brand-medium-blue;
+$color-surface-dark: $brand-dark-blue;
+$color-border-dark: $brand-dark-gray;
+$color-border-light-dark: color.adjust($brand-dark-gray, $lightness: 10%);
+$color-text-primary-dark: $brand-light-gray;
+$color-text-secondary-dark: color.adjust($brand-light-gray, $lightness: 10%);
+$color-text-tertiary-dark: $brand-ochre-blue;
+
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+
+$font-family-base:
+  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+  Arial, sans-serif;
+$font-family-mono:
+  "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New",
+  monospace;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.5rem;
+$font-size-3xl: 1.875rem;
+
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+$radius-sm: 0.25rem;
+$radius-md: 0.375rem;
+$radius-lg: 0.5rem;
+$radius-full: 9999px;
+
+$shadow-lg:
+  0 10px 15px -3px rgba(0, 0, 0, 0.1),
+  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl:
+  0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+$transition-base: 200ms ease;
+
+$sidebar-width: 320px;
+$sidebar-collapsed-width: 60px;
+$header-height: 64px;
+$panel-width: 40vw;
+$chat-max-width: 900px;

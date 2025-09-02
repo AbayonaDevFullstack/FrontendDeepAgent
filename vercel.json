@@ -1,0 +1,23 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "devCommand": "npm run dev",
+  "env": {
+    "NEXT_PUBLIC_DEPLOYMENT_URL": "https://lois-agent-backend.onrender.com",
+    "NEXT_PUBLIC_AGENT_ID": "deepagent"
+  },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_DEPLOYMENT_URL": "https://lois-agent-backend.onrender.com",
+      "NEXT_PUBLIC_AGENT_ID": "deepagent"
+    }
+  },
+  "functions": {
+    "app/**/*.ts": {
+      "runtime": "@vercel/node@3.1.5"
+    }
+  },
+  "regions": ["iad1"]
+}
