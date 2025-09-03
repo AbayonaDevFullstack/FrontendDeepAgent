@@ -4,7 +4,7 @@ import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { MessageSquare, X } from "lucide-react";
-import { createClient } from "@/lib/client";
+import { createNativeClient } from "@/lib/native-client";
 import { useAuthContext } from "@/providers/Auth";
 import { getDeployment } from "@/lib/environment/deployments";
 import type { Thread } from "../../types/types";
@@ -29,38 +29,8 @@ export const ThreadHistorySidebar = React.memo<ThreadHistorySidebarProps>(
       if (!deployment?.deploymentUrl || !session?.accessToken) return;
       setIsLoadingThreadHistory(true);
       try {
-        const client = createClient(session.accessToken);
-        const response = await client.threads.search({
-          limit: 30,
-          sortBy: "created_at",
-          sortOrder: "desc",
-        });
-        const threadList: Thread[] = response.map((thread) => {
-          let displayContent = `Thread ${(thread as unknown as Record<string, unknown>).thread_id as string ? ((thread as unknown as Record<string, unknown>).thread_id as string).slice(0, 8) : 'unknown'}`;
-          try {
-            if (
-              thread.values &&
-              typeof thread.values === "object" &&
-              "messages" in thread.values
-            ) {
-              const messages = thread.values.messages;
-              if (Array.isArray(messages) && messages.length > 0) {
-                displayContent = extractStringFromMessageContent(messages[0]);
-              }
-            }
-          } catch (error) {
-            console.warn(
-              `Failed to get first message for thread ${(thread as unknown as Record<string, unknown>).thread_id}:`,
-              error,
-            );
-          }
-          return {
-            id: (thread as unknown as Record<string, unknown>).thread_id as string,
-            title: displayContent,
-            createdAt: new Date((thread as unknown as Record<string, unknown>).created_at as string),
-            updatedAt: new Date(((thread as unknown as Record<string, unknown>).updated_at as string) || ((thread as unknown as Record<string, unknown>).created_at as string)),
-          } as Thread;
-        });
+        const client = createNativeClient(session.accessToken, deployment.deploymentUrl);
+        const threadList = await client.searchThreads({ limit: 30 });
         setThreads(
           threadList.sort(
             (a, b) => b.updatedAt.getTime() - a.updatedAt.getTime(),

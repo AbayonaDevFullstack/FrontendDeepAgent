@@ -15,9 +15,9 @@ import { ChatMessage } from "../ChatMessage/ChatMessage";
 import { ThreadHistorySidebar } from "../ThreadHistorySidebar/ThreadHistorySidebar";
 import { Logo } from "../Logo/Logo";
 import type { SubAgent, TodoItem, ToolCall } from "../../types/types";
-import { useChat } from "../../hooks/useChat";
+import { useNativeChat } from "../../hooks/useNativeChat";
 import styles from "./ChatInterface.module.scss";
-import { Message } from "@langchain/langgraph-sdk";
+import { Message } from "@/lib/native-client";
 import { extractStringFromMessageContent } from "../../utils/utils";
 
 interface ChatInterfaceProps {
@@ -48,7 +48,7 @@ export const ChatInterface = React.memo<ChatInterfaceProps>(
     const [isThreadHistoryOpen, setIsThreadHistoryOpen] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    const { messages, isLoading, sendMessage, stopStream } = useChat(
+    const { messages, isLoading, sendMessage, stopStream } = useNativeChat(
       threadId,
       setThreadId,
       onTodosUpdate,

@@ -7,7 +7,7 @@ import { ToolCallBox } from "../ToolCallBox/ToolCallBox";
 import { MarkdownContent } from "../MarkdownContent/MarkdownContent";
 import type { SubAgent, ToolCall } from "../../types/types";
 import styles from "./ChatMessage.module.scss";
-import { Message } from "@langchain/langgraph-sdk";
+import { Message } from "@/lib/native-client";
 import { extractStringFromMessageContent } from "../../utils/utils";
 
 interface ChatMessageProps {
