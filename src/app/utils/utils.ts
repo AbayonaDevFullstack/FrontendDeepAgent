@@ -1,7 +1,7 @@
 import { Message } from "@/lib/native-client";
 
 export function extractStringFromMessageContent(message: Message): string {
-  let content = message.content;
+  let content: string | any[] = message.content;
 
   // Si content es string, primero intentamos parsearlo como JSON
   if (typeof content === "string") {
@@ -16,7 +16,7 @@ export function extractStringFromMessageContent(message: Message): string {
       }
     } catch {
       // Si falla el parsing, devolver el string original
-      return content;
+      return content as string;
     }
   }
 

@@ -81,8 +81,9 @@ export function useNativeChat(
       // Agregar mensaje de AI vacío
       setMessages(prev => [...prev, aiMessage]);
 
+      let streamingContent = "";
+
       try {
-        let streamingContent = "";
 
         await client.sendMessageStream(
           message,

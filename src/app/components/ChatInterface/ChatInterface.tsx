@@ -103,12 +103,7 @@ export const ChatInterface = React.memo<ChatInterfaceProps>(
       messages.forEach((message: Message) => {
         if (message.type === "ai") {
           const toolCallsInMessage: ToolCall[] = [];
-          if (
-            message.additional_kwargs?.tool_calls &&
-            Array.isArray(message.additional_kwargs.tool_calls)
-          ) {
-            toolCallsInMessage.push(...message.additional_kwargs.tool_calls);
-          } else if (message.tool_calls && Array.isArray(message.tool_calls)) {
+          if (message.tool_calls && Array.isArray(message.tool_calls)) {
             toolCallsInMessage.push(
               ...message.tool_calls
                 .filter((toolCall: { name?: string }) => toolCall.name !== "")

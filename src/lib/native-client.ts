@@ -226,7 +226,7 @@ export class NativeApiClient {
 
       try {
         while (true) {
-          const { done, value } = await reader.read();
+          const { done, value } = await reader!.read();
           
           if (done) break;
 
@@ -265,14 +265,15 @@ export class NativeApiClient {
           }
         }
       } finally {
-        reader.releaseLock();
+        reader!.releaseLock();
       }
 
       console.log('✅ Stream completed');
 
     } catch (error) {
       console.error('❌ Stream error:', error);
-      onError?.(error instanceof Error ? error.message : 'Unknown streaming error');
+      const errorMessage = (error as Error)?.message || String(error) || 'Unknown streaming error';
+      onError?.(errorMessage);
     }
   }
 
